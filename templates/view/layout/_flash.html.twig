@@ -1,0 +1,8 @@
+
+
+ {% for class, message in app.session.flashbag.all %}
+    <div class="alert alert-{{ class }}">{{ message | join('<br>') }}</div>
+ {% endfor %}
+
+
+

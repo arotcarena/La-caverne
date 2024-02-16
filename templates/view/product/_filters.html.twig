@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+
+
+<div class="row">
+
+    <div class="col-3">
+        {{ form_row(form.category) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.brand) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.price_order) }}
+    </div>
+    <div class="col-3">
+        {{ form_row(form.price_max) }}
+        {{ form_row(form.price_min) }}
+    </div>
+
+</div>
+
+<div class="row align-items-end">
+
+    <div class="col-5">
+        {{ form_row(form.qSearch) }}
+    </div>
+    <div class="col">
+        <button class="btn btn-primary">Lancer la recherche</button>
+    </div>
+</div>
+
+
+
+{{ form_end(form) }}

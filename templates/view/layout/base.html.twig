@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}La Caverne{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+        {# bootstrap css #}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        {# bootstrap icons #}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+        {% block stylesheets %} {% endblock %}
+        {% block javascripts %} {% endblock %}
+        
+    </head>
+    <body>
+        {# navigation #}
+        {% if current_menu is defined and current_menu in {0: 'admin_home', 1: 'admin_product', 2: 'admin_category', 3: 'admin_brand'} %}
+            {{ include('view/layout/_admin_nav.html.twig') }}
+        {% else %}
+            {{ include('view/layout/_nav.html.twig')}}
+        {% endif %}
+        {# sous-navigation #}
+        {% if current_menu is defined and current_menu is same as 'profile' %}
+            {{ include('view/layout/_profile_subnav.html.twig') }}
+        {% endif %}
+
+        
+
+        <div class="container">
+            {# messages flash #}
+            {{ include('view/layout/_flash.html.twig') }}
+        
+            {% block body %}{% endblock %}
+        </div>
+
+        
+        
+        {# MON PENSE BETE #}
+        {{ include('view/layout/_toDoList.html.twig') }}
+
+        
+        {# footer #}
+        {{ include('view/layout/_footer.html.twig') }}
+
+        
+    </body>
+</html>

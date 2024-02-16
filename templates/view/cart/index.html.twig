@@ -1,0 +1,58 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}La caverne : Mon panier{% endblock %}
+
+{% block body %}
+
+    <h1>Mon panier</h1>
+
+    {% if items is empty %}
+        Le panier est vide
+    {% else %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Produit</th>
+                    <th>Prix Unitaire</th>
+                    <th>Quantité</th>
+                    <th>Prix Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td><img src="{{ item.product.getFirst_pic_url('mini') }}"></td>
+                        <td>{{ item.product.title }}</td>
+                        <td>{{ item.product.price|number_format(0, ',', ' ') }} €</td>
+                        <td>{{ item.quant }}</td>
+                        <td>{{ (item.product.price * item.quant)|number_format(0, ',', ' ') }} €</td>
+                        <td>
+                            <a class="btn btn-danger" href="{{ path('cart_delete', {'id': item.product.id, 'quant': item.quant}) }}">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        
+
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="text-align: end;">Prix total de la commande : </td>
+                    <td>{{ total|number_format(0, ',', ' ') }} €</td>
+                    <td>
+                        <a class="btn btn-success" href="">
+                            <i class="bi bi-credit-card"></i><span class="ms-2">Commander</span>
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
+            
+    {% endif %}
+
+
+{% endblock %}

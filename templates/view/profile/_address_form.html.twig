@@ -1,0 +1,48 @@
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-2">
+        {{ form_row(form.civility, {"label": "Civilité"}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        {{ form_row(form.first_name, {"label": "Prénom"}) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.last_name, {"label": "Nom"}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-2">
+        {{ form_row(form.number, {"label": "Numéro"}) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.way, {"label": "Voie"}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-2">
+        {{ form_row(form.postal_code, {"label": "Code postal"}) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.city, {"label": "Ville"}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        {{ form_row(form.delivery, {"label": "Adresse de livraison"}) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.invoice, {"label": "Adresse de facturation"}) }}
+    </div>
+</div>
+
+{% if address_selected.id is not null %}
+    <input type="hidden" name="update" value="{{ address_selected.id }}">
+{% endif %} 
+
+<button class="btn btn-primary">{% if address_selected.id is not null %}Modifier{% else %}+ Ajouter{% endif %}</button>
+
+{{ form_end(form) }}

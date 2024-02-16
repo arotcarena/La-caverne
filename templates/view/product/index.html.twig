@@ -1,0 +1,34 @@
+{% extends 'view/layout/base.html.twig' %}
+
+
+{% block title %}La caverne : tous nos produits{% endblock %}
+
+{% block body %}
+
+    <h1>Tous nos produits</h1>
+
+    {# filtres de recherche #}
+    {{ include('view/product/_filters.html.twig') }}
+
+
+
+    {# total items count #}
+    <div class="count mt-4 mb-4" style="font-style: italic;">
+        <strong>{{ pagination.getTotalItemCount }}</strong> résultats de recherche.
+    </div>
+
+    <div class="row">
+    {% for product in pagination %}
+
+        <div class="col mb-4">
+        {{ include('view/product/_card.html.twig') }}
+        </div>
+    {% endfor %}
+    </div>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}

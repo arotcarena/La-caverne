@@ -1,0 +1,14 @@
+
+<div class="container mb-4">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link {% if current_submenu is defined and current_submenu is same as 'profile_infos' %}active{% endif %}" href="{{ path('profile_infos') }}">Informations personnelles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_submenu is defined and current_submenu is same as 'profile_addresses' %}active{% endif %}" href="{{ path('profile_addresses') }}">Mes adresses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_submenu is defined and current_submenu is same as 'profile_orders' %}active{% endif %}" href="{{ path('profile_orders') }}">Mes commandes</a>
+        </li>
+    </ul>
+</div>

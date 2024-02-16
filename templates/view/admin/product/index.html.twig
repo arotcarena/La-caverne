@@ -1,0 +1,64 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}Admin : listing des produits{% endblock %}
+
+{% block body %}
+    <h1>Listing des produits</h1>
+
+    <a class="btn btn-primary" href="{{ path('admin_product_new') }}">Create new</a>
+
+
+
+    {# total items count #}
+    <div class="count mt-4 mb-4" style="font-style: italic;">
+        <strong>{{ pagination.getTotalItemCount }}</strong> résultats de recherche.
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#id</th>
+                <th>Photo principale</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in pagination %}
+            <tr>
+                <td>{{ product.id }}</td>
+
+                <td><img src="{{ product.first_pic_url('mini') }}" ></td>
+
+                <td>{{ product.title }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>{{ product.brand.name }}</td>
+                <td>{{ product.model }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('admin_product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    
+{% endblock %}

@@ -1,0 +1,52 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a title="Aller à l'accueil" class="navbar-brand" href="{{ path('home') }}">La Caverne</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a title="Voir tous les produits" class="nav-link {% if current_menu is defined and current_menu is same as 'product' %}active{% endif %}" href="{{ path('product_index') }}">Nos produits</a>
+        </li>
+        <li class="nav-item">
+          <a title="Nous contacter" class="nav-link {% if current_menu is defined and current_menu is same as 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
+        </li>
+        {# panier #}
+        <li class="nav-item">
+          <a title="Voir mon panier" class="nav-link {% if current_menu is defined and current_menu is same as 'cart' %}active{% endif %}" href="{{ path('cart_index') }}">
+            <i class="bi bi-cart3"></i>
+              {% if app.session.get('cart')|length is not same as 0 %}
+                <span style="font-weight: bold; color: green;">{{ '(' ~ app.session.get('cart')|length ~ ')' }}</span>
+              {% endif %}
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav me-4 mb-2 mb-lg-0">
+        {# mon compte #}
+        <li class="nav-item">
+          <a class="nav-link {% if current_menu is defined and current_menu is same as 'profile' %}active{% endif %}" href="{{ path('profile_infos') }}">
+            {% if app.user is not null %}
+              <span title="Voir mon profil" style="color: green;"><i class="bi bi-person-circle"></i>{{ app.user.email }}</span>
+            {% else %}
+              <span title="Connexion"><i class="bi bi-person"></i></i>Mon compte</span>
+            {% endif %}
+          </a>
+        </li>
+        {# déconnexion #}
+        {% if app.user is not null %}
+          <li class="nav-item">
+            <a title="Déconnexion" class="nav-link" href="{{ path('logout') }}"><i class="bi bi-box-arrow-right"></i></i></a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+

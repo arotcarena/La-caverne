@@ -1,0 +1,27 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ path('admin_home') }}">La Caverne : Administration</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        
+          <a class="nav-link {% if current_menu is defined and current_menu is same as 'admin_product' %}active{% endif %}" href="{{ path('admin_product_index') }}">Gérer les produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_menu is defined and current_menu is same as 'admin_category' %}active{% endif %}" href="{{ path('admin_category_index') }}">Gérer les catégories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_menu is defined and current_menu is same as 'admin_brand' %}active{% endif %}" href="{{ path('admin_brand_index') }}">Gérer les marques</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+

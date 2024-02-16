@@ -1,0 +1,15 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}Admin : éditer un produit{% endblock %}
+
+{% block body %}
+    <h1>Editer un produit</h1>
+  
+    <a class="btn btn-outline-primary mb-4" href="{{ path('admin_product_index') }}">back to list</a>
+    
+
+    {{ include('view/admin/product/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('view/admin/product/_delete_form.html.twig') }}
+{% endblock %}

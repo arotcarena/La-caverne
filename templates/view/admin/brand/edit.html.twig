@@ -1,0 +1,13 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}Admin : éditer une marque{% endblock %}
+
+{% block body %}
+    <h1>Editer une marque</h1>
+
+    {{ include('view/admin/brand/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_brand_index') }}">back to list</a>
+
+    {{ include('view/admin/brand/_delete_form.html.twig') }}
+{% endblock %}

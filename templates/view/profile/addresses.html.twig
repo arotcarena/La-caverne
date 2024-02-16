@@ -1,0 +1,24 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}La caverne : Mes adresses{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-4">
+            {% for address in addresses %}
+                {{ include('view/profile/_address.html.twig') }}
+            {% endfor %}
+
+            {% if address_selected.id is not null %}
+                <div class="mt-4">
+                    <a class="btn btn-primary" href="">+ Ajouter</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col">
+            {{ include('view/profile/_address_form.html.twig') }}
+        </div>
+    </div>
+
+{% endblock %}

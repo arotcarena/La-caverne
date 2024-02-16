@@ -1,0 +1,14 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}Admin : ajouter un produit{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un produit</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>Valider</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('admin_product_index') }}">back to list</a>
+{% endblock %}

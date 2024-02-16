@@ -1,0 +1,11 @@
+{% extends 'view/layout/base.html.twig' %}
+
+{% block title %}Admin : ajouter une marque{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une marque</h1>
+
+    {{ include('view/admin/brand/_form.html.twig') }}
+
+    <a href="{{ path('admin_brand_index') }}">back to list</a>
+{% endblock %}
